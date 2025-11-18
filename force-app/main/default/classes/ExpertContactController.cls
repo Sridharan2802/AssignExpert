@@ -15,7 +15,7 @@ public with sharing class ExpertContactController {
         List<CaseTeamMember> caseTeamMembers = [
             SELECT MemberId, Member.Name, Member.Email
             FROM CaseTeamMember
-            WHERE TeamRole.Name IN ('Expert', 'Insured Person')
+            WHERE TeamRole.Name = 'Expert'
             AND ParentId = :caseId
             AND MemberId != null
         ];
