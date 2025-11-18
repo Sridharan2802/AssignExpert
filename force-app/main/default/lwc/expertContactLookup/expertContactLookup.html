@@ -1,0 +1,18 @@
+<!--
+  @description       : 
+  @author            : ChangeMeIn@UserSettingsUnder.SFDoc
+  @group             : 
+  @last modified on  : 11-14-2025
+  @last modified by  : ChangeMeIn@UserSettingsUnder.SFDoc
+-->
+<template>
+    <template if:true={contactOptions}>
+       <c-lookup-contact
+            label="Select Expert Contact"
+            records={contactOptions}
+            oncontactselected={handleSelect}>
+        </c-lookup-contact>
+        
+    </template>
+
+</template>

@@ -1,0 +1,63 @@
+<!--
+  @description       : 
+  @author            : ChangeMeIn@UserSettingsUnder.SFDoc
+  @group             : 
+  @last modified on  : 11-14-2025
+  @last modified by  : ChangeMeIn@UserSettingsUnder.SFDoc
+-->
+<template>
+    <div class="slds-form-element">
+
+        <label class="slds-form-element__label">{label}</label>
+
+        <div class="lookup-container">
+
+            <!-- SHOW PILL -->
+            <template if:true={selectedRecord}>
+                <div class="slds-pill_container slds-m-top_small">
+                    <span class="slds-pill">
+                        <span class="slds-pill__label">{selectedRecord.label}</span>
+                        <button class="slds-button slds-button_icon slds-pill__remove"
+                                onclick={clearSelection}>
+                            <lightning-icon icon-name="utility:close"
+                                            size="x-small"
+                                            alternative-text="Remove">
+                            </lightning-icon>
+                        </button>
+                    </span>
+                </div>
+            </template>
+
+            <!-- SEARCH INPUT -->
+            <template if:false={selectedRecord}>
+                <div class="slds-input-has-icon slds-input-has-icon_left">
+                    
+                    <lightning-input type="search"
+                                     placeholder="Search contact…"
+                                     value={searchKey}
+                                     onchange={handleSearchChange}>
+                    </lightning-input>
+                </div>
+            </template>
+
+            <!-- DROPDOWN -->
+            <template if:true={showDropdown}>
+                <ul class="dropdown-list">
+                    <template for:each={results} for:item="item">
+                        <li key={item.value}
+                            class="dropdown-item"
+                            data-id={item.value}
+                            data-label={item.label}
+                            onclick={handleSelect}>
+                            <lightning-icon icon-name="standard:contact"
+                                            size="x-small"
+                                            class="slds-m-right_small"></lightning-icon>
+                            {item.label}
+                        </li>
+                    </template>
+                </ul>
+            </template>
+
+        </div>
+    </div>
+</template>
